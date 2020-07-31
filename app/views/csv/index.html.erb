@@ -151,9 +151,9 @@
 <table border='1'>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <th>id</th>
+      <th>firstname</th>
+      <th>lastname</th>
       <th>city</th>
       <th>num_of_people</th>
       <th>has_child</th>
@@ -165,10 +165,10 @@
   <tbody>
     <% @house_data.each do |data| %>
       <tr>
-        <td><%= data.ID %></td>
-        <td><%= data.Firstname %></td>
-        <td><%= data.Lastname %></td>
-        <td><%= data.City %></td>
+        <td><%= data.id %></td>
+        <td><%= data.firstname %></td>
+        <td><%= data.lastname %></td>
+        <td><%= data.city %></td>
         <td><%= data.num_of_people %></td>
         <td><%= data.has_child %></td>
         <td><%= data.created_at %></td>
@@ -184,14 +184,14 @@
 <table border='1'>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Label</th>
-      <th>House</th>
-      <th>Year</th>
-      <th>Month</th>
-      <th>Temperature</th>
-      <th>Daylight</th>
-      <th>EnergyProduction</th>
+      <th>id</th>
+      <th>label</th>
+      <th>house</th>
+      <th>year</th>
+      <th>month</th>
+      <th>temperature</th>
+      <th>daylight</th>
+      <th>energyproduction</th>
       <th>created_at</th>
       <th>updated_at</th>
     </tr>
@@ -200,14 +200,14 @@
   <tbody>
     <% @dataset.each do |data| %>
       <tr>
-        <td><%= data.ID %></td>
-        <td><%= data.Label %></td>
-        <td><%= data.House %></td>
-        <td><%= data.Year %></td>
-        <td><%= data.Month %></td>
-        <td><%= data.Temperature %></td>
-        <td><%= data.Daylight %></td>
-        <td><%= data.EnergyProduction %></td>
+        <td><%= data.id %></td>
+        <td><%= data.label %></td>
+        <td><%= data.house %></td>
+        <td><%= data.year %></td>
+        <td><%= data.month %></td>
+        <td><%= data.temperature %></td>
+        <td><%= data.daylight %></td>
+        <td><%= data.energyproduction %></td>
         <td><%= data.created_at %></td>
         <td><%= data.updated_at %></td>
       </tr>

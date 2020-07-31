@@ -36,7 +36,7 @@ class CsvController < ApplicationController
 
       sql = '
               SELECT
-                city, SUM(energyProduction) as production
+                city, SUM(energyproduction) as production
               FROM
                 datasets
               INNER JOIN
@@ -56,7 +56,7 @@ class CsvController < ApplicationController
       # エネルギー生産量
       sql = '
               SELECT
-                year, month, SUM(energyProduction) as production, city
+                year, month, SUM(energyproduction) as production, city
               FROM
                 datasets
               INNER JOIN
