@@ -13,6 +13,6 @@ class Dataset < ApplicationRecord
 
 	# 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["label", "house", "year", "month", "temperature", "daylight", "energyProduction"]
+    ["label", "house", "year", "month", "temperature", "daylight", "energyproduction"]
 	end
 end
