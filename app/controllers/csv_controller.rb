@@ -21,49 +21,49 @@ class CsvController < ApplicationController
     if @house_data.present? &&  @dataset.present? then
       sql = '
               SELECT
-                City, count(*) as count
+                city, count(*) as count
               FROM
                 house_data
               GROUP BY
-                City
+                city
             '
       city_house_count = ActiveRecord::Base.connection.select_all(sql).to_hash
       city_house_count.each do |data|
-        @london_housese = data["count"] if data["City"] == "London"
-        @cambrige_housese = data["count"] if data["City"] == "Cambridge"
-        @oxford_housese = data["count"] if data["City"] == "Oxford"
+        @london_housese = data["count"] if data["city"] == "London"
+        @cambrige_housese = data["count"] if data["city"] == "Cambridge"
+        @oxford_housese = data["count"] if data["city"] == "Oxford"
       end
 
       sql = '
               SELECT
-                City, SUM(EnergyProduction) as EnergyProduction
+                city, SUM(energyProduction) as production
               FROM
                 datasets
               INNER JOIN
                 house_data
-                ON datasets.House = house_data.ID
+                ON datasets.house = house_data.id
               GROUP BY
-                City
+                city
             '
       city_energy = ActiveRecord::Base.connection.select_all(sql).to_hash
 
       city_energy.each do |data|
-        @London = data["EnergyProduction"] if data["City"] == 'London'
-        @Cambridge = data["EnergyProduction"] if data["City"] == 'Cambridge'
-        @Oxford = data["EnergyProduction"] if data["City"] == 'Oxford'
+        @London = data["production"] if data["city"] == 'London'
+        @Cambridge = data["production"] if data["city"] == 'Cambridge'
+        @Oxford = data["production"] if data["city"] == 'Oxford'
       end
 
       # エネルギー生産量
       sql = '
               SELECT
-                Year, Month, SUM(EnergyProduction) as EnergyProduction, City
+                year, month, SUM(energyProduction) as production, city
               FROM
                 datasets
               INNER JOIN
                 house_data
-                ON datasets.House = house_data.ID
+                ON datasets.house = house_data.id
               GROUP BY
-                Year, Month, City
+                year, month, city
             '
       sql_result = ActiveRecord::Base.connection.select_all(sql).rows
       @lodon_year_energy = []

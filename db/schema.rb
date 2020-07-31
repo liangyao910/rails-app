@@ -10,27 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_042741) do
+ActiveRecord::Schema.define(version: 2020_07_31_022605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "datasets", primary_key: "ID", id: :bigint, default: -> { "nextval('datasets_id_seq'::regclass)" }, force: :cascade do |t|
-    t.integer "Label"
-    t.integer "House"
-    t.integer "Year"
-    t.integer "Month"
-    t.integer "Temperature"
-    t.integer "Daylight"
-    t.integer "EnergyProduction"
+  create_table "datasets", force: :cascade do |t|
+    t.integer "label"
+    t.integer "house"
+    t.integer "year"
+    t.integer "month"
+    t.integer "temperature"
+    t.integer "daylight"
+    t.integer "energyProduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "house_data", primary_key: "ID", id: :bigint, default: -> { "nextval('house_data_id_seq'::regclass)" }, force: :cascade do |t|
-    t.string "Firstname"
-    t.string "Lastname"
-    t.string "City"
+  create_table "house_data", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "city"
     t.integer "num_of_people"
     t.boolean "has_child"
     t.datetime "created_at", null: false

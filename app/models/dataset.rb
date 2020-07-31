@@ -1,10 +1,11 @@
 class Dataset < ApplicationRecord
 	def self.import(file)
-		CSV.foreach(file.path, headers: true) do |row|
+		table = CSV.table(file.path, headers: true)
+		table.each do |row|
 			# IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
-			data = find_by(id: row["ID"]) || new
+			data = find_by(id: row[:id]) || new
 			# CSVからデータを取得し、設定する
-			data.attributes = row.to_hash.slice(*updatable_attributes)
+			data.attributes = row.to_h.map{|k,v| [k.to_s, v] }.to_h.slice(*updatable_attributes)
 			# 保存する
 			data.save
 		end
@@ -12,6 +13,6 @@ class Dataset < ApplicationRecord
 
 	# 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["Label", "House", "Year", "Month", "Temperature", "Daylight", "EnergyProduction", "created_at", "updated_at"]
+    ["label", "house", "year", "month", "temperature", "daylight", "energyProduction"]
 	end
 end
