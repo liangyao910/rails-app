@@ -64,6 +64,8 @@ class CsvController < ApplicationController
                 ON datasets.house = house_data.id
               GROUP BY
                 year, month, city
+              ORDER BY
+                year ASC, month ASC;
             '
       sql_result = ActiveRecord::Base.connection.select_all(sql).rows
       @lodon_year_energy = []
